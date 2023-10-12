@@ -3,16 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- importa animaciones con CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <!-- Importa estilos css con bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
     <title>Registro usuarios</title>
 </head>
 <body>
-    <h1>Alta para nuevos usuarios</h1>
-    
-    <form action="index.html" target="_self">
-        
-        <label for="nombre">Nombre</label>
-        <input type="text" id="nombre" name="nombre"><br><br>
 
+    <h1 class="animate__animated animate__bounce">Alta para nuevos usuarios</h1> <!-- La clase anima el título -->
+    
+    <!--form action="index.html" target="_self">
+        <div class="animate__animated animate__bounce animate__delay-1s">    
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre"><br><br>
+        </div>
         <label for="aPat">Apellido paterno</label>
         <input type="text" id="aPat" name="aPat"><br><br>
 
@@ -31,6 +39,61 @@
         <label for="pass">Contrasenia</label>
         <input type="password" id="pass" name="pass" required><br><br>
 
+    </form-->
+
+    <!-- Documentación de bootstrap de un formulario: https://getbootstrap.com/docs/4.0/components/forms/ -->
+    <form>
+        <!-- Campo nombre -->
+        <div class="form-group animate__animated animate__bounce animate__delay-1s">
+            <label for="exampleInputEmail1">Nombre</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" aria-describedby="emailHelp" placeholder="Ingresa tu nombre">
+            <!--small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small-->
+        </div>
+
+        <!-- Campo apellido paterno -->
+        <div class="form-group">
+            <label for="exampleInputEmail1">Apellido paterno</label>
+            <input type="text" class="form-control" id="aPat" name="aPat" aria-describedby="emailHelp" placeholder="Ingresa tu nombre">
+            <!--small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small-->
+        </div>
+
+        <!-- Campo apellido materno -->
+        <div class="form-group">
+            <label for="exampleInputEmail1">Apellido materno</label>
+            <input type="text" class="form-control" id="aMat" name="aMat" aria-describedby="emailHelp" placeholder="Ingresa tu nombre">
+            <!--small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small-->
+        </div>
+
+        <!-- Campo cargo -->
+        <div class="form-group">
+            <label for="exampleInputEmail1">Cargo</label>
+            <input type="text" class="form-control" id="cargo" name="cargo" aria-describedby="emailHelp" placeholder="Ingresa tu nombre">
+            <!--small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small-->
+        </div>
+
+        <!-- Campo Departamento -->
+        <div class="form-group">
+            <label for="exampleInputEmail1">Departamento</label>
+            <input type="text" class="form-control" id="Departamento" name="Departamento" aria-describedby="emailHelp" placeholder="Ingresa tu nombre">
+            <!--small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small-->
+        </div>
+
+        <!-- Campo matricula -->
+        <div class="form-group">
+            <label for="exampleInputEmail1">Matricula</label>
+            <input type="text" class="form-control" id="matricula" name="matricula" aria-describedby="emailHelp" placeholder="Ingresa tu nombre">
+            <!--small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small-->
+        </div>
+        <!-- Campo contraseña -->
+        <div class="form-group">
+            <label for="exampleInputPassword1">Contraseña</label>
+            <input type="password" class="form-control" id="pass" name="pass" placeholder="Password">
+        </div>
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Recordar</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar</button>
     </form>
 </body>
 </html>
