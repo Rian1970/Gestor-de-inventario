@@ -71,7 +71,7 @@
                         <a class="dropdown-item" href="./nueva_documentacion.php">Alta</a>
                         <!--a class="dropdown-item" href="#">Baja</a-->
                         <!--div class="dropdown-divider"></div-->
-                        <a class="dropdown-item" href="./ver_documentacion.php">Cambio</a>
+                        <!--a class="dropdown-item" href="./ver_documentacion.php">Cambio</a-->
                     </div>
                 </li>
             </ul>
@@ -101,7 +101,7 @@
         
             <!-- Región izquierda -->
             <div class="col-sm-4 sidenav">
-                <h2>Equipos disponibles</h2>
+                <h2>Documentos</h2>
 
                 <?php
                     $host = "localhost";

@@ -67,11 +67,11 @@
                     Documentación
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Ver</a>
-                        <a class="dropdown-item" href="#">Alta</a>
-                        <a class="dropdown-item" href="#">Baja</a>
+                        <!--a class="dropdown-item" href="#">Ver</a-->
+                        <a class="dropdown-item" href="../documentacion/nueva_documentacion.php">Alta</a>
+                        <!--a class="dropdown-item" href="#">Baja</a-->
                         <!--div class="dropdown-divider"></div-->
-                        <a class="dropdown-item" href="#">Cambio</a>
+                        <!--a class="dropdown-item" href="../documentacion/ver_documentacion.php">Cambio</a-->
                     </div>
                 </li>
             </ul>
