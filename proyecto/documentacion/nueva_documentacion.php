@@ -12,7 +12,7 @@
     <!-- Importa estilos css con bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Registro usuarios</title>
+    <title>Registro nueva documentacion</title>
 </head>
 <body>
 
@@ -152,7 +152,7 @@
 
             <!-- Región central -->
             <div class="col-sm-8 text-left"> 
-                <h1 class="animate__animated animate__bounce">Registra un nuevo mantenimiento de equipo</h1> <!-- La clase anima el título -->
+                <h1 class="animate__animated animate__bounce">Alta documentación</h1> <!-- La clase anima el título -->
             
                 <!-- Documentación de bootstrap de un formulario: https://getbootstrap.com/docs/4.0/components/forms/ -->
                 <form>

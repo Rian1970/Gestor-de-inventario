@@ -153,14 +153,25 @@
             <!-- Región central -->
             <div class="col-sm-8 text-left"> 
                 <h1 class="animate__animated animate__bounce">Actualiza el mantenimiento de equipo</h1> <!-- La clase anima el título -->
-
-                <label for="estadoEquipo">Estado del equipo</label>
-                <input type="text" id="estadoEquipo" name="estadoEquipo"><br><br>
-                <!-- Para el estado puede haber opciones -->
                 
-                <label for="fechaFinMantenimietno">Fecha de mantenimiento</label>
-                <input type="date" id="fechaFinMantenimietno" name="fechaFinMantenimietno"><br><br>
-              
+                <!-- Documentación de bootstrap de un formulario: https://getbootstrap.com/docs/4.0/components/forms/ -->
+                <form>
+                    <!-- Campo estado -->
+                    <div class="form-group animate__animated animate__bounce animate__delay-1s">
+                        <label for="estadoEquipo">Estado del equipo</label>
+                        <input type="text" class="form-control" id="estadoEquipo" name="estadoEquipo" aria-describedby="emailHelp" placeholder="Ingresa el estado del equipo">
+                        <!--small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small-->
+                    </div>
+
+                    <!-- Campo fecha -->
+                    <div class="form-group animate__animated animate__bounce animate__delay-1s">
+                        <label for="fechaInicioMantenimietno">Fecha de mantenimiento</label>
+                        <input type="date" class="form-control" id="fechaInicioMantenimietno" name="fechaInicioMantenimietno" aria-describedby="emailHelp" placeholder="Ingresa el fechaInicioMantenimietno">
+                        <!--small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small-->
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </form>
+
             </div>
 
             <!-- Región derecha -->

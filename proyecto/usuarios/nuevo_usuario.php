@@ -159,53 +159,53 @@
                     <!-- Campo nombre -->
                     <div class="form-group animate__animated animate__bounce animate__delay-1s">
                         <label for="nombre">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" name="nombre" aria-describedby="emailHelp" placeholder="Ingresa tu nombre">
+                        <input type="text" class="form-control" id="nombre" name="nombre" aria-describedby="emailHelp" placeholder="Ingresa el nombre">
                         <!--small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small-->
                     </div>
 
                     <!-- Campo apellido paterno -->
                     <div class="form-group">
                         <label for="aPat">Apellido paterno</label>
-                        <input type="text" class="form-control" id="aPat" name="aPat" aria-describedby="emailHelp" placeholder="Ingresa tu nombre">
+                        <input type="text" class="form-control" id="aPat" name="aPat" aria-describedby="emailHelp" placeholder="Ingresa el apellido paterno">
                         <!--small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small-->
                     </div>
 
                     <!-- Campo apellido materno -->
                     <div class="form-group">
                         <label for="aMat">Apellido materno</label>
-                        <input type="text" class="form-control" id="aMat" name="aMat" aria-describedby="emailHelp" placeholder="Ingresa tu nombre">
+                        <input type="text" class="form-control" id="aMat" name="aMat" aria-describedby="emailHelp" placeholder="Ingresa el apellido materno">
                         <!--small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small-->
                     </div>
 
                     <!-- Campo cargo -->
                     <div class="form-group">
                         <label for="cargo">Cargo</label>
-                        <input type="text" class="form-control" id="cargo" name="cargo" aria-describedby="emailHelp" placeholder="Ingresa tu nombre">
+                        <input type="text" class="form-control" id="cargo" name="cargo" aria-describedby="emailHelp" placeholder="Ingresa el cargo">
                         <!--small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small-->
                     </div>
 
                     <!-- Campo Departamento -->
                     <div class="form-group">
                         <label for="Departamento">Departamento</label>
-                        <input type="text" class="form-control" id="Departamento" name="Departamento" aria-describedby="emailHelp" placeholder="Ingresa tu nombre">
+                        <input type="text" class="form-control" id="Departamento" name="Departamento" aria-describedby="emailHelp" placeholder="Ingresa el departamento">
                         <!--small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small-->
                     </div>
 
                     <!-- Campo matricula -->
                     <div class="form-group">
                         <label for="matricula">Matricula</label>
-                        <input type="text" class="form-control" id="matricula" name="matricula" aria-describedby="emailHelp" placeholder="Ingresa tu nombre">
+                        <input type="text" class="form-control" id="matricula" name="matricula" aria-describedby="emailHelp" placeholder="Ingresa la matrícula">
                         <!--small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small-->
                     </div>
                     <!-- Campo contraseña -->
                     <div class="form-group">
                         <label for="pass">Contraseña</label>
-                        <input type="password" class="form-control" id="pass" name="pass" placeholder="Password">
+                        <input type="password" class="form-control" id="pass" name="pass" placeholder="Contraseña">
                     </div>
-                    <div class="form-check">
+                    <!--div class="form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
                         <label class="form-check-label" for="exampleCheck1">Recordar</label>
-                    </div>
+                    </div-->
                     <button type="submit" class="btn btn-primary">Guardar</button>
                 </form>
 
