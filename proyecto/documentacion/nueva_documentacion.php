@@ -67,11 +67,11 @@
                     Documentación
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Ver</a>
-                        <a class="dropdown-item" href="#">Alta</a>
-                        <a class="dropdown-item" href="#">Baja</a>
+                        <!--a class="dropdown-item" href="#">Ver</a-->
+                        <a class="dropdown-item" href="./nueva_documentacion.php">Alta</a>
+                        <!--a class="dropdown-item" href="#">Baja</a-->
                         <!--div class="dropdown-divider"></div-->
-                        <a class="dropdown-item" href="#">Cambio</a>
+                        <a class="dropdown-item" href="./ver_documentacion.php">Cambio</a>
                     </div>
                 </li>
             </ul>
@@ -86,10 +86,10 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <!--a class="dropdown-item" href="#">Ver</a-->
-                        <a class="dropdown-item" href="./nuevo_registro.php">Alta</a>
+                        <a class="dropdown-item" href="../mantenimiento/nuevo_registro.php">Alta</a>
                         <!--a class="dropdown-item" href="#">Baja</a-->
                         <!--div class="dropdown-divider"></div-->
-                        <a class="dropdown-item" href="./actualizar_registro.php">Cambio</a>
+                        <a class="dropdown-item" href="../mantenimiento/actualizar_registro.php">Cambio</a>
                     </div>
                 </li>
             </ul>
@@ -115,29 +115,25 @@
                         die("Error de conexión: " . $this->conexion->connect_error);
                     }else{
                         // Se obtienen todos los usuarios
-                        $query = "SELECT * FROM registro_mantenimiento";
+                        $query = "SELECT * FROM documentacion_tecnica";
 
                         if ($result = $mysqli->query($query)) {
                             echo "<table border='1'>";
                             echo "<tr>
-                                    <th>Tipo</th>
-                                    <th>Estado</th>
-                                    <th>Costo</th>
+                                    <th>Documento</th>
+                                    <th>Equipo</th>
+                                    <th>Descripción</th>
                                 </tr>";
 
                             while ($row = $result->fetch_assoc()) {
-                                $field1name = $row["Mantenimiento_id"];
+                                $field1name = $row["Doc_id"];
                                 $field2name = $row["Equipo_id"];
-                                $field3name = $row["Tipo_Mantenimiento"];
-                                $field4name = $row["Estado_Mantenimiento"];
-                                $field5name = $row["Costo"];
-                                $field6name = $row["Fecha_Inicio_M"];
-                                $field7name = $row["Fecha_Fin_M"];
+                                $field3name = $row["Descripcion"];
 
                                 echo '<tr>
+                                        <td>'.$field1name.'</td> 
+                                        <td>'.$field2name.'</td> 
                                         <td>'.$field3name.'</td> 
-                                        <td>'.$field4name.'</td> 
-                                        <td>'.$field5name.'</td> 
                                     </tr>';
                                 
                             }
@@ -153,27 +149,27 @@
             <!-- Región central -->
             <div class="col-sm-8 text-left"> 
                 <h1 class="animate__animated animate__bounce">Alta documentación</h1> <!-- La clase anima el título -->
-            
+
                 <!-- Documentación de bootstrap de un formulario: https://getbootstrap.com/docs/4.0/components/forms/ -->
                 <form>
                     <!-- Campo tipo -->
                     <div class="form-group animate__animated animate__bounce animate__delay-1s">
-                        <label for="tipo">Tipo de mantenimiento</label>
-                        <input type="text" class="form-control" id="tipo" name="tipo" aria-describedby="emailHelp" placeholder="Ingresa el tipo">
+                        <label for="archivo">Selecciona el archivo de la documentacion</label>
+                        <input type="file" class="form-control" id="archivo" name="archivo" aria-describedby="emailHelp" placeholder="Selecciona el archivo">
                         <!--small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small-->
                     </div>
 
                     <!-- Campo estado -->
                     <div class="form-group animate__animated animate__bounce animate__delay-1s">
-                        <label for="estadoEquipo">Estado del equipo</label>
-                        <input type="text" class="form-control" id="estadoEquipo" name="estadoEquipo" aria-describedby="emailHelp" placeholder="Ingresa el estado del equipo">
+                        <label for="descripcion">Descripcion</label>
+                        <input type="text" class="form-control" id="descripcion" name="descripcion" aria-describedby="emailHelp" placeholder="Ingresa la descripcion">
                         <!--small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small-->
                     </div>
 
                     <!-- Campo fecha -->
                     <div class="form-group animate__animated animate__bounce animate__delay-1s">
-                        <label for="fechaInicioMantenimietno">Fecha de mantenimiento</label>
-                        <input type="date" class="form-control" id="fechaInicioMantenimietno" name="fechaInicioMantenimietno" aria-describedby="emailHelp" placeholder="Ingresa el fechaInicioMantenimietno">
+                        <label for="Version">Version</label>
+                        <input type="text" class="form-control" id="Version" name="Version" aria-describedby="emailHelp" placeholder="Ingresa la version">
                         <!--small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small-->
                     </div>
                     <button type="submit" class="btn btn-primary">Guardar</button>
