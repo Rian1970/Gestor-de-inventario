@@ -17,7 +17,7 @@
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Inicio</a>
+        <a class="navbar-brand" href="../">Inicio</a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -32,10 +32,10 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <!--a class="dropdown-item" href="#">Ver</a-->
-                        <a class="dropdown-item" href="./nuevo_usuario.">Alta</a>
+                        <a class="dropdown-item" href="./nuevo_usuario.php">Alta</a>
                         <!--a class="dropdown-item" href="#">Baja</a-->
                         <!--div class="dropdown-divider"></div-->
-                        <a class="dropdown-item" href="./actualiza_usuario.">Cambio</a>
+                        <a class="dropdown-item" href="./actualiza_usuario.php">Cambio</a>
                     </div>
                 </li>
             </ul>
@@ -49,11 +49,11 @@
                     Equipo
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Ver</a>
-                        <a class="dropdown-item" href="#">Alta</a>
-                        <a class="dropdown-item" href="#">Baja</a>
+                        <!--a class="dropdown-item" href="#">Ver</a-->
+                        <a class="dropdown-item" href="../equipo/nuevo_equipo.php">Alta</a>
+                        <!--a class="dropdown-item" href="#">Baja</a-->
                         <!--div class="dropdown-divider"></div-->
-                        <a class="dropdown-item" href="#">Cambio</a>
+                        <!--a class="dropdown-item" href="#">Cambio</a-->
                     </div>
                 </li>
             </ul>
@@ -85,11 +85,11 @@
                     Mantenimiento
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Ver</a>
-                        <a class="dropdown-item" href="#">Alta</a>
-                        <a class="dropdown-item" href="#">Baja</a>
+                        <!--a class="dropdown-item" href="#">Ver</a-->
+                        <a class="dropdown-item" href="../mantenimiento/nuevo_registro.php">Alta</a>
+                        <!--a class="dropdown-item" href="#">Baja</a-->
                         <!--div class="dropdown-divider"></div-->
-                        <a class="dropdown-item" href="#">Cambio</a>
+                        <a class="dropdown-item" href="../mantenimiento/actualizar_registro.php">Cambio</a>
                     </div>
                 </li>
             </ul>
@@ -101,25 +101,87 @@
         
             <!-- Región izquierda -->
             <div class="col-sm-4 sidenav">
-              <p><a href="#">Link</a></p>
-              <p><a href="#">Link</a></p>
-              <p><a href="#">Link</a></p>
+                <h2>Usuarios</h2>
+
+                <?php
+                    $host = "localhost";
+                    $usuario = "root";
+                    $contrasena = "";
+                    $base_de_datos = "inventariolab";
+
+                    $mysqli = new mysqli($host, $usuario, $contrasena, $base_de_datos);
+
+                    if ($mysqli->connect_error) {
+                        die("Error de conexión: " . $this->conexion->connect_error);
+                    }else{
+                        // Se obtienen todos los usuarios
+                        $query = "SELECT * FROM usuario";
+
+                        if ($result = $mysqli->query($query)) {
+                            echo "<table border='1'>";
+                            echo "<tr>
+                                    <th>Nombre</th>
+                                    <th>Apellido</th>
+                                    <th>Cargo</th>
+                                </tr>";
+
+                            while ($row = $result->fetch_assoc()) {
+                                $field1name = $row["Usuario_id"];
+                                $field2name = $row["Tipo_Cargo"];
+                                $field3name = $row["Matricula"];
+                                $field4name = $row["Nombre"];
+                                $field5name = $row["ApellidoP"];
+                                $field6name = $row["ApellidoM"];
+                                $field7name = $row["Contrasenia"];
+
+                                echo '<tr>
+                                        <td>'.$field4name.'</td> 
+                                        <td>'.$field5name.'</td> 
+                                        <td>'.$field2name.'</td> 
+                                    </tr>';
+                                
+                            }
+                            echo "</table>";
+                            /*freeresultset*/
+                            $result->free();
+                        }
+                    }
+                ?>
+                
             </div>
 
             <!-- Región central -->
             <div class="col-sm-8 text-left"> 
-                <h1 class="animate__animated animate__bounce">Plantilla</h1> <!-- La clase anima el título -->
-              
+                <h1 class="animate__animated animate__bounce">Actualiza tu información de usuario</h1> <!-- La clase anima el título -->
+
+                <!-- Documentación de bootstrap de un formulario: https://getbootstrap.com/docs/4.0/components/forms/ -->
+                <form>
+                    <!-- Campo cargo -->
+                    <div class="form-group">
+                        <label for="cargo">Cargo</label>
+                        <input type="text" class="form-control" id="cargo" name="cargo" aria-describedby="emailHelp" placeholder="Ingresa el cargo">
+                        <!--small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small-->
+                    </div>
+
+                    <!-- Campo Departamento -->
+                    <div class="form-group">
+                        <label for="Departamento">Departamento</label>
+                        <input type="text" class="form-control" id="Departamento" name="Departamento" aria-describedby="emailHelp" placeholder="Ingresa el departamento">
+                        <!--small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small-->
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Recordar</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </form>
+
             </div>
 
             <!-- Región derecha -->
             <div class="col-sm-2 sidenav">
-                <div class="well">
-                    <p>ADS</p>
-                </div>
-                <div class="well">
-                    <p>ADS</p>
-                </div>
+                
+                
             </div>
         </div>
     </div>

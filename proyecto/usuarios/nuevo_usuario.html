@@ -100,10 +100,23 @@
         <div class="row content">
         
             <!-- Región izquierda -->
-            <div class="col-sm-2 sidenav">
-              <p><a href="#">Link</a></p>
-              <p><a href="#">Link</a></p>
-              <p><a href="#">Link</a></p>
+            <div class="col-sm-4 sidenav">
+                <h2 class="animate__animated animate__bounce">Usuarios</h2>
+
+                <!--?php
+                    $instancia = new ClaseSencilla();
+
+                    // Esto también se puede hacer con una variable:
+                    $nombreClase = 'ClaseSencilla';
+                    $instancia = new $nombreClase(); // new ClaseSencilla()
+                ?-->
+
+                <table border="1">
+                    <tr>
+                        <th>Usuario</th>
+                        <th>Cargo</th>
+                    </tr>
+                </table><br>
             </div>
 
             <!-- Región central -->
@@ -164,6 +177,7 @@
                     </div>
                     <button type="submit" class="btn btn-primary">Guardar</button>
                 </form>
+
 
 
             </div>
