@@ -1,26 +1,89 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-
-    <base href="./">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- importa animaciones con CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-
     <!-- Importa estilos css con bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <title>Registro usuarios</title>
+    <title>Login</title>
 </head>
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="./">Inicio</a>
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+
+        <!-- Usuarios -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">      
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Usuarios
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <!--a class="dropdown-item" href="#">Ver</a-->
+                        <a class="dropdown-item" href="./usuarios/nuevo_usuario.php">Alta</a>
+                        <!--a class="dropdown-item" href="#">Baja</a-->
+                        <!--div class="dropdown-divider"></div-->
+                        <a class="dropdown-item" href="./usuarios/actualiza_usuario.php">Cambio</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Equipo -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">      
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Equipo
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <!--a class="dropdown-item" href="#">Ver</a-->
+                        <a class="dropdown-item" href="./equipo/nuevo_equipo.php">Alta</a>
+                        <!--a class="dropdown-item" href="#">Baja</a-->
+                        <!--div class="dropdown-divider"></div-->
+                        <!--a class="dropdown-item" href="#">Cambio</a-->
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Documentacion -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">      
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Documentación
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Ver</a>
+                        <a class="dropdown-item" href="#">Alta</a>
+                        <a class="dropdown-item" href="#">Baja</a>
+                        <!--div class="dropdown-divider"></div-->
+                        <a class="dropdown-item" href="#">Cambio</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Mantenimiento -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">      
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Mantenimiento
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <!--a class="dropdown-item" href="#">Ver</a-->
+                        <a class="dropdown-item" href="./mantenimiento/nuevo_registro.php">Alta</a>
+                        <!--a class="dropdown-item" href="#">Baja</a-->
+                        <!--div class="dropdown-divider"></div-->
+                        <a class="dropdown-item" href="./mantenimiento/actualizar_registro.php">Cambio</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </nav>
 
     <div class="container-fluid text-center">    
@@ -54,7 +117,7 @@
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
                         <label class="form-check-label" for="exampleCheck1">Recordar</label>
                     </div>
-                    <button type="submit" class="btn btn-primary">Ingresar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
                 </form>
 
 
