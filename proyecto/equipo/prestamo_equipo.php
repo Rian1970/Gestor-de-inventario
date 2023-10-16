@@ -1,3 +1,13 @@
+<?php
+  session_start();
+  error_reporting(0);
+  $varsesion = $_SESSION["id_usuario"];
+
+  if($varsesion == null || $varsesion == ''){
+    echo "Usted no tiene autorizacion";
+    die();
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,47 +18,54 @@
 <body>
     <h1>Prestamo de equipo de laboratorio</h1>
 
-        <label for="matricula">Matricula del usuario</label>
-        <input type="text" id="matricula" name="matricula"><br><br>
-
         <h2>Equipos disponibles</h2>
         <!-- <table border="1">
             <tr><th>Nombre</th><th>Modelo</th><th>Categoria</th></tr>
         </table><br> -->
 
     <?php
-    // Incluir la clase Libro y la clase LibroDAOMySQL
-    require_once('Equipo.php'); // Asegúrate de que Libro.php contiene la definición de la clase Libro
-    require_once('daoEquipoImpl.php'); // Asegúrate de que LibroDAOMySQL.php contiene la definición de la clase LibroDAOMySQL
+    
+    require_once('../entidades/Equipo.php'); 
+    require_once('../impl/daoEquipoImpl.php'); 
 
-    // Crear una instancia de LibroDAOMySQL (proporciona los detalles de conexión)
     $equipoDAO = new daoEquipoImpl("localhost", "root", "", "InventarioLab");
 
-    // Obtener todos los libros desde la base de datos y ordenarlos según la selección del usuario
     $equipos = $equipoDAO->getTodosEquipos();
-
-    // Mostrar la lista de libros en una tabla
-    if (!empty($equipos)) {
-        echo '<table border="1">';
-        echo '<tr><th>Nombre</th><th>No Serie</th><th>Categoria</th><th>Fecha Compra</th><th>Estado del equipo</th><th>Salon</th></tr>';
-        foreach ($equipos as $equipos) {
-            echo '<tr>';
-            echo '<td>' . $equipos->getNombre() . '</td>';
-            echo '<td>' . $equipos->getSerie() . '</td>';
-            echo '<td>' . $equipos->getCategoria() . '</td>';
-            echo '<td>' . $equipos->getFechaC() . '</td>';
-            echo '<td>' . $equipos->getEstadoE() . '</td>';
-            echo '<td>' . $equipos->getSalon() . '</td>';
-            echo '</tr>';
-        }
-        echo '</table>';
-    } else {
-        echo '<p>No se encontraron equipos en la base de datos.</p>';
-    }
-    ?>
     
-    <label for="fechaPrestamo">Fecha de prestamo</label>
-        <input type="date" id="fechaPrestamo" name="fechaPrestamo"><br><br>
-
+    ?>
+    <form method="post" action="pedir.php">
+        <?php
+            if (!empty($equipos)) {
+                echo '<table border="1">';
+                echo '<tr><th>Nombre</th><th>No Serie</th><th>Categoria</th><th>Estado del equipo</th></tr>';
+                foreach ($equipos as $equipos) {
+                    if($equipos->getEstadoE() === "Disponible"){
+                    echo '<tr>';
+                    echo '<td>' . $equipos->getNombre() . '</td>';
+                    echo '<td>' . $equipos->getSerie() . '</td>';
+                    echo '<td>' . $equipos->getCategoria() . '</td>';
+                    // echo '<td>' . $equipos->getFechaC() . '</td>';
+                    echo '<td>' . $equipos->getEstadoE() . '</td>';
+                    // echo '<td>' . $equipos->getSalon() . '</td>';
+                    $id = $equipos->getEquipoId();
+                    echo "<td><input type='checkbox' name='opciones[]' id='$id' value='$id'><br>";
+                    echo '</tr>';
+                    }
+                }
+                echo '</table>';
+            } else {
+                echo '<p>No se encontraron equipos en la base de datos.</p>';
+            }
+        
+        ?>
+        
+        <h3>Introduce la fecha de prestamo</h3>
+        <label for="fechaPrestamo">Fecha de prestamo</label>
+        <input type="date" id="fechaPrestamo" name="fechaPrestamo" required min="<?php echo date('Y-m-d'); ?>"><br><br>
+    
+        <button type="submit" name="pedir" value="pedir">Pedir</button>
+    </form>
+    <br>
+    <a href=../flujo_ventanas.php>Regresar</a>
 </body>
 </html>
