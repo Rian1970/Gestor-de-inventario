@@ -155,7 +155,7 @@
                 <h1 class="animate__animated animate__bounce">Alta para nuevos usuarios</h1> <!-- La clase anima el título -->
               
                 <!-- Documentación de bootstrap de un formulario: https://getbootstrap.com/docs/4.0/components/forms/ -->
-                <form>
+                <form action="daoUsuarioImpl.php">
                     <!-- Campo nombre -->
                     <div class="form-group animate__animated animate__bounce animate__delay-1s">
                         <label for="nombre">Nombre</label>
@@ -208,8 +208,6 @@
                     </div-->
                     <button type="submit" class="btn btn-primary">Guardar</button>
                 </form>
-
-
 
             </div>
 

@@ -127,10 +127,10 @@
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
                         <label class="form-check-label" for="exampleCheck1">Recordar</label>
                     </div>
-                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    
+                    <!-- Envia los campos name de los inputs-->
+                    <button type="submit" class="btn btn-primary">Guardar</button> 
                 </form>
-
-
             </div>
 
             <!-- Región derecha -->
