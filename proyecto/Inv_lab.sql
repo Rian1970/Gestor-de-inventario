@@ -5,7 +5,7 @@ USE InventarioLab;
 CREATE TABLE salon (
     Salon_id INT NOT NULL AUTO_INCREMENT,
     Tipo_Salon CHAR(50) NOT NULL,
-    Num_Salon CHAR(50) NOT NULL,
+    Num_Salon CHAR(50) UNIQUE NOT NULL,
     PRIMARY KEY (Salon_id)
 ) engine=innoDB;
 
@@ -47,8 +47,8 @@ CREATE TABLE gestion (
     Usuario_id INT NOT NULL,
     Salon_id INT NOT NULL,
     PRIMARY KEY (Gestion_id),
-    FOREIGN KEY (Usuario_id) REFERENCES usuario (Usuario_id) ON UPDATE CASCADE,
-    FOREIGN KEY (Salon_id) REFERENCES salon (Salon_id) 
+    FOREIGN KEY (Usuario_id) REFERENCES usuario (Usuario_id) ON DELETE CASCADE,
+    FOREIGN KEY (Salon_id) REFERENCES salon (Salon_id) ON UPDATE CASCADE
 ) engine=innoDB;
 
 INSERT INTO salon (Num_Salon, Tipo_Salon)

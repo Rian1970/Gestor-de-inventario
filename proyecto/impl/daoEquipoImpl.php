@@ -49,9 +49,21 @@ class daoEquipoImpl implements daoEquipo {
         $serie = $e->getSerie();
         $nombre = $e->getNombre();
         $fecha = $e->getFechaC();
-
         $stmt->bind_param("ssssss", $estado, $caterogria, $salon, $serie, $nombre, $fecha);
-        $stmt->execute();
+
+        $s = 0;
+        try {
+            $stmt->execute();
+        } catch (mysqli_sql_exception $e) {
+              echo "<div class='alert alert-danger'>El equipo ya existe.</div>";
+              echo "<br><a href=../equipo/nuevo_equipo.html>Regresar</a>";
+              $s = 1;
+        }
+
+        if($s == 0){
+            echo "El equipo ha sido creado.<br>";
+            echo "<br><a href=../equipo/nuevo_equipo.html>Regresar</a>";
+        }
     }
 
     public function borrarEquipo($e) {

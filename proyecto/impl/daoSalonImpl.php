@@ -45,9 +45,21 @@ class daoSalonImpl implements daoSalon {
 
         $numSalon = $s->getNumSalon();
         $tipoSalon = $s->getTipo();
-
         $stmt->bind_param("ss", $numSalon, $tipoSalon);
-        $stmt->execute();
+        
+        $s = 0;
+        try {
+            $stmt->execute();
+        } catch (mysqli_sql_exception $e) {
+              echo "<div class='alert alert-danger'>El salon ya existe.</div>";
+              echo "<br><a href=../salon/nuevo_salon.html>Regresar</a>";
+              $s = 1;
+        }
+
+        if($s == 0){
+            echo "El salon ha sido creado.<br>";
+            echo "<br><a href=../salon/nuevo_salon.html>Regresar</a>";
+        }
     }
 
     public function borrarSalon($borra) {
@@ -59,7 +71,7 @@ class daoSalonImpl implements daoSalon {
     }
 
     public function getGestion($g) {
-        $this->id = $g;
+ 
         $salones = array();
 
         // Realizar una consulta para obtener todos los libros de la base de datos

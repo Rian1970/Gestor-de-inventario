@@ -43,9 +43,21 @@ class daoUsuarioImpl implements daoUsuario {
         $apM = $u->getApM();
         $contrasenia = $u->getContrasenia();
         $contraseniaHash = password_hash($contrasenia, PASSWORD_DEFAULT);
-
         $stmt->bind_param("ssssss", $cargo, $matricula, $nombre, $apP, $apM, $contraseniaHash);
-        $stmt->execute();
+
+        $s = 0;
+        try {
+            $stmt->execute();
+        } catch (mysqli_sql_exception $e) {
+              echo "<div class='alert alert-danger'>La matricula del usuario ya existe.</div>";
+              echo "<br><a href=../usuarios/nuevo_usuario.html>Regresar</a>";
+              $s = 1;
+        }
+
+        if($s == 0){
+            echo "El usuario ha sido creado.<br>";
+            echo "<br><a href=../index.php>Regresar</a>";
+        }
     }
 
     public function actualizarUsuario($id, $c){

@@ -27,8 +27,8 @@
 
     $equipoDAO->guardarEquipo($equipo);
 
-    echo "El equipo ha sido creado.<br>";
-    echo "<a href=../flujo_ventanas.php>Regresar</a>";
+    // echo "El equipo ha sido creado.<br>";
+    // echo "<a href=../flujo_ventanas.php>Regresar</a>";
     ?>
 </body>
 </html>

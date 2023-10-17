@@ -23,8 +23,6 @@
 
     $salonDAO->guardarSalon($salon);
 
-    echo "El salon ha sido creado.<br>";
-    echo "<a href=../flujo_ventanas.php>Regresar</a>";
     ?>
 </body>
 </html>

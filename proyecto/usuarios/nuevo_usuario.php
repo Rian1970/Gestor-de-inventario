@@ -35,8 +35,8 @@
 
     $usuarioDAO->guardarUsuario($usuario);
 
-    echo "El usuario ha sido creado.<br>";
-    echo "<a href=../index.php>Regresar</a>";
+    // echo "El usuario ha sido creado.<br>";
+    // echo "<a href=../index.php>Regresar</a>";
     ?>
 </body>
 </html>
