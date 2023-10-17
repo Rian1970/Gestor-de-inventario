@@ -56,7 +56,7 @@ class daoUsuarioImpl implements daoUsuario {
 
         if($s == 0){
             echo "El usuario ha sido creado.<br>";
-            echo "<br><a href=../inicio.php>Regresar</a>";
+            echo "<br><a href=../index.php>Regresar</a>";
         }
     }
 

@@ -24,7 +24,7 @@
     <!-- Importa estilos css con bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Prestamo equipo de laboratorio</title>
+    <title>Devolucion equipo</title>
 </head>
 <body>
 
@@ -97,111 +97,46 @@
 
             <!-- Región central -->
             <div class="col-sm-8 text-left">
-                <h1 class="animate__animated animate__bounce">Prestamo de equipo de laboratorio</h1>
-
-                    <h2>Equipos disponibles</h2>
-                    <!-- <table border="1">
-                        <tr><th>Nombre</th><th>Modelo</th><th>Categoria</th></tr>
-                    </table><br> -->
-
+                <h1 class="animate__animated animate__bounce">Devolución de equipo de laboratorio</h1>
+                
                 <?php
                 
-                require_once('../entidades/Equipo.php'); 
-                require_once('../impl/daoEquipoImpl.php'); 
+                require_once('../entidades/Prestamo.php'); 
+                require_once('../impl/daoPrestamoImpl.php'); 
 
-                $equipoDAO = new daoEquipoImpl("localhost", "root", "", "InventarioLab");
+                $prestamoDAO = new daoPrestamoImpl("localhost", "root", "", "InventarioLab");
 
-                $equipos = $equipoDAO->getTodosEquipos();
+                $equipos = $prestamoDAO->getTodosPrestamos($varsesion);
                 
                 ?>
-                <form method="post" action="pedir.php">
+                <form method="post" action="devolver.php">
                     <?php
-                        // Paginacion
-                        $registro_por_pagina = 5;
-                        $pagina = '';
-                        if(isset($_GET["pagina"])){
-                            $pagina = $_GET["pagina"];
-                        }else{
-                            $pagina = 1;
-                        }
-
-                        $start_from = ($pagina-1) * $registro_por_pagina;
-                        foreach ($equipos as $equipos) {
-                            if($equipos->getEstadoE() === "Disponible"){
-                                $number++;
-                            }
-                        }
-                        
-                        echo "Hay $number elementos<br>";
-                        $total_records = $number;
-                        $total_pages = ceil($total_records/$registro_por_pagina);
-                        $start_loop = $pagina;
-                        $diferencia = $total_pages - $pagina;                        
-    
-                        $equipos = $equipoDAO->getTodosEquipos();
                         if (!empty($equipos)) {
                             echo '<table border="1">';
-                            echo '<tr><th>Nombre</th><th>No Serie</th><th>Categoria</th><th>Estado del equipo</th></tr>';
-                            
-                            //echo "Empecemos con el bloque $start_loop <br>";
-
-                            $inicio = $start_loop-1;
-                            $fin = $inicio + $registro_por_pagina;
-                            $i = 0;
-                            //echo "Rango: $inicio y $fin";
+                            echo '<tr><th>Nombre</th><th>Fecha de prestamo</th></tr>';
                             foreach ($equipos as $equipos) {
-                                if($equipos->getEstadoE() === "Disponible"){
-                                    if($i >= $inicio && $i < $fin){
-                                        echo '<tr>';
-                                        echo '<td>' . $equipos->getNombre() . '</td>';
-                                        echo '<td>' . $equipos->getSerie() . '</td>';
-                                        echo '<td>' . $equipos->getCategoria() . '</td>';
-                                        // echo '<td>' . $equipos->getFechaC() . '</td>';
-                                        echo '<td>' . $equipos->getEstadoE() . '</td>';
-                                        // echo '<td>' . $equipos->getSalon() . '</td>';
-                                        $id = $equipos->getEquipoId();
-                                        echo "<td><input type='checkbox' name='opciones[]' id='$id' value='$id'><br>";
-                                        echo '</tr>';
-                                    }
-                                    $i++;
+                                if($equipos->getNombre() == $varsesion){
+                                echo '<tr>';
+                                // echo '<td>' . $equipos->getNombre() . '</td>';
+                                echo '<td>' . $equipos->getUsuarioId() . '</td>';
+                                // echo '<td>' . $equipos->getEquipoId() . '</td>';
+                                echo '<td>' . $equipos->getFechaP() . '</td>';
+                                // echo '<td>' . $equipos->getEstadoE() . '</td>';
+                                // echo '<td>' . $equipos->getSalon() . '</td>';
+                                $id = $equipos->getPrestamoId();
+                                echo "<td><input type='checkbox' name='opciones[]' id='$id' value='$id'><br>";
+                                echo '</tr>';
                                 }
                             }
-                            
                             echo '</table>';
-
-
-
-                            if($diferencia <= $total_pages){
-                                $start_loop = $total_pages-$diferencia;
-                            }
-
-                            $end_loop = $total_pages;
-
-                            if($pagina > 1){
-                                echo "<a class='pagina' href='prestamo_equipo.php?pagina=1'>Primera</a>";
-                                echo "<a class='pagina' href='prestamo_equipo.php?pagina=" . ($pagina - 1) . " '> << </a>";
-                            }
-
-                            for($i=$start_loop; $i<=$end_loop; $i++) {     
-                                echo "<a class='pagina' href='prestamo_equipo.php?pagina=" . $i. " '>" .$i. " </a>";
-                            }
-
-                            if($pagina <= $end_loop) {
-                                echo "<a class='pagina' href='prestamo_equipo.php?pagina=".($pagina + 1)."'>>></a>";
-                                echo "<a class='pagina' href='prestamo_equipo.php?pagina=".$total_pages."'>Última</a>";
-                            }
-
-                            } else {
-                                echo '<p>No se encontraron equipos en la base de datos.</p>';
-                            }
+                        } else {
+                            echo '<p>No se encontraron equipos prestados a tu nombre en la base de datos.</p>';
+                            
+                        }
                     
                     ?>
-                    
-                    <h5>Introduce la fecha de prestamo</h5>
-                    <label for="fechaPrestamo">Fecha de prestamo</label>
-                    <input type="date" id="fechaPrestamo" name="fechaPrestamo" required min="<?php echo date('Y-m-d'); ?>"><br><br>
-                
-                    <button type="submit" name="pedir" value="pedir">Pedir</button>
+                    <br>
+                    <button type="submit" name="devolver" value="devolver">Devolver</button>
                 </form>
                 <br>
                 <a href=../flujo_ventanas.php>Regresar</a>

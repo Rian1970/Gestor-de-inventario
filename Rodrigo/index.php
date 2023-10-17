@@ -26,7 +26,7 @@
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="./inicio.php">Inicio</a>
+        <a class="navbar-brand" href="./index.php">Inicio</a>
     </nav>
 
     <div class="container-fluid text-center">    
@@ -37,10 +37,8 @@
             </div>
 
             <!-- Región central -->
-            <div class="col-sm-8 text-left"> 
+            <div class="col-sm-8 text-left">
                 <h1 class="animate__animated animate__bounce">Ingreso al sistema de inventario de laboratorio</h1> <!-- La clase anima el título -->
-              
-                <h1></h1>
     
                 <!-- Documentación de bootstrap de un formulario: https://getbootstrap.com/docs/4.0/components/forms/ -->
                 <form action="usuarios/valida.php" method="post">

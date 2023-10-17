@@ -4,7 +4,8 @@
   $varsesion = $_SESSION["id_usuario"];
 
   if($varsesion == null || $varsesion == ''){
-    echo "Usted no tiene autorizacion";
+    echo "Usted no tiene autorizacion<br>";
+    echo "<a class='navbar-brand' href='./index.php'>Regresar al inicio</a>";
     die();
   }
 ?>
@@ -23,12 +24,12 @@
     <!-- Importa estilos css con bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Registro usuarios</title>
+    <title>Inicio</title>
 </head>
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="./inicio.php">Inicio</a>
+        <a class="navbar-brand" href="./index.php">Inicio</a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -58,7 +59,10 @@
                     Equipo
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="../equipo/nuevo_equipo.php">Alta</a>
+                        <a class="dropdown-item" href="./equipo/nuevo_equipo.php">Alta</a>
+                        <a class="dropdown-item" href="./equipo/prestamo_equipo.php">Solicitar</a>
+                        <a class="dropdown-item" href="./equipo/devolucion_equipo.php">Devolución</a>
+                        <a class="dropdown-item" href="./equipo/eliminar_equipo.php">Eliminar</a>
                     </div>
                 </li>
             </ul>
@@ -73,26 +77,35 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <!--a class="dropdown-item" href="#">Ver</a-->
-                        <a class="dropdown-item" href="../documentacion/nueva_documentacion.php">Alta</a>
+                        <a class="dropdown-item" href="./salon/gestion_salon.php">Ver</a>
+                        <a class="dropdown-item" href="./salon/nuevo_salon.php">Agregar</a>
+                        <a class="dropdown-item" href="./salon/ver_salon.php">Editar</a>
                     </div>
                 </li>
             </ul>
         </div>
+
+        <a href="cerrar_sesion.php">Cerrar Sesión</a>
+
     </nav>
-    <h1>Bienvenido</h1>
+    <div class="container-fluid text-center">    
+        <div class="row content">
 
-    <h2>Equipo</h2>
-    <a href="equipo/nuevo_equipo.html">Agregar equipo nuevo</a><br>
-    <a href="equipo/prestamo_equipo.php">Pedir prestado un equipo</a><br>
-    <a href="equipo/devolucion_equipo.php">Devolver equipo</a><br>
-    <a href="equipo/eliminar_equipo.php">Eliminar equipo</a>
+            <!-- Región izquierda -->
+            <div class="col-sm-2 sidenav">
+            </div>
 
-    <h2>Salon</h2>
-    <a href="salon/gestion_salon.php">Ver gestión de salones</a><br>
-    <a href="salon/ver_salon.php">Editar gestión de salones</a><br>
-    <a href="salon/nuevo_salon.html">Agregar nuevo salón</a><br>
+            <!-- Región central -->
+            <div class="col-sm-8 text-left">
+                <h1 class="animate__animated animate__bounce">Bienvenido</h1>
+            </div>
 
-    <br><br><br><a href="cerrar_sesion.php">Cerrar Sesión</a>
+            <!-- Región derecha -->
+            <div class="col-sm-2 sidenav">
+                
+            </div>
+        </div>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

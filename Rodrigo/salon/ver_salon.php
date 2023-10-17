@@ -24,7 +24,7 @@
     <!-- Importa estilos css con bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Prestamo equipo de laboratorio</title>
+    <title>Salones</title>
 </head>
 <body>
 
@@ -87,121 +87,58 @@
 
         <a href="../cerrar_sesion.php">Cerrar Sesión</a>
 
-    </nav>
+    </nav> 
+
     <div class="container-fluid text-center">    
         <div class="row content">
-
+        
             <!-- Región izquierda -->
             <div class="col-sm-2 sidenav">
             </div>
 
             <!-- Región central -->
-            <div class="col-sm-8 text-left">
-                <h1 class="animate__animated animate__bounce">Prestamo de equipo de laboratorio</h1>
+            <div class="col-sm-8 text-left"> 
+                <h1 class="animate__animated animate__bounce">Ver salones</h1>
 
-                    <h2>Equipos disponibles</h2>
-                    <!-- <table border="1">
-                        <tr><th>Nombre</th><th>Modelo</th><th>Categoria</th></tr>
-                    </table><br> -->
+                <h3>Salecciona una o más casillas si deseas borrar, si deseas editar la información solo selecciona una casilla.</h3>
+                <h3>La casilla que selecciones es el salon que quieres gestionar</h3>
 
                 <?php
+                // Incluir la clase Libro y la clase LibroDAOMySQL
+                require_once('../entidades/Salon.php'); 
+                require_once('../entidades/Gestion.php'); 
+                require_once('../impl/daoSalonImpl.php'); 
                 
-                require_once('../entidades/Equipo.php'); 
-                require_once('../impl/daoEquipoImpl.php'); 
+                $salonDAO = new daoSalonImpl("localhost", "root", "", "InventarioLab");
 
-                $equipoDAO = new daoEquipoImpl("localhost", "root", "", "InventarioLab");
-
-                $equipos = $equipoDAO->getTodosEquipos();
-                
+                // Obtener todos los libros desde la base de datos y ordenarlos según la selección del usuario
+                $salones = $salonDAO->getSalones();
                 ?>
-                <form method="post" action="pedir.php">
+
+                <form method="post" action="procesar.php">
                     <?php
-                        // Paginacion
-                        $registro_por_pagina = 5;
-                        $pagina = '';
-                        if(isset($_GET["pagina"])){
-                            $pagina = $_GET["pagina"];
-                        }else{
-                            $pagina = 1;
-                        }
-
-                        $start_from = ($pagina-1) * $registro_por_pagina;
-                        foreach ($equipos as $equipos) {
-                            if($equipos->getEstadoE() === "Disponible"){
-                                $number++;
-                            }
-                        }
-                        
-                        echo "Hay $number elementos<br>";
-                        $total_records = $number;
-                        $total_pages = ceil($total_records/$registro_por_pagina);
-                        $start_loop = $pagina;
-                        $diferencia = $total_pages - $pagina;                        
-    
-                        $equipos = $equipoDAO->getTodosEquipos();
-                        if (!empty($equipos)) {
+                        // Mostrar la lista 
+                        if (!empty($salones)) {
                             echo '<table border="1">';
-                            echo '<tr><th>Nombre</th><th>No Serie</th><th>Categoria</th><th>Estado del equipo</th></tr>';
-                            
-                            //echo "Empecemos con el bloque $start_loop <br>";
-
-                            $inicio = $start_loop-1;
-                            $fin = $inicio + $registro_por_pagina;
-                            $i = 0;
-                            //echo "Rango: $inicio y $fin";
-                            foreach ($equipos as $equipos) {
-                                if($equipos->getEstadoE() === "Disponible"){
-                                    if($i >= $inicio && $i < $fin){
-                                        echo '<tr>';
-                                        echo '<td>' . $equipos->getNombre() . '</td>';
-                                        echo '<td>' . $equipos->getSerie() . '</td>';
-                                        echo '<td>' . $equipos->getCategoria() . '</td>';
-                                        // echo '<td>' . $equipos->getFechaC() . '</td>';
-                                        echo '<td>' . $equipos->getEstadoE() . '</td>';
-                                        // echo '<td>' . $equipos->getSalon() . '</td>';
-                                        $id = $equipos->getEquipoId();
-                                        echo "<td><input type='checkbox' name='opciones[]' id='$id' value='$id'><br>";
-                                        echo '</tr>';
-                                    }
-                                    $i++;
-                                }
+                            echo '<tr><th>Número de salón</th><th>Tipo de salón</th></tr>';
+                            foreach ($salones as $salones) {
+                                echo '<tr>';
+                                // echo '<td>' . $salones->getNombre() . '</td>';
+                                echo '<td>' . $salones->getNumSalon() . '</td>';
+                                echo '<td>' . $salones->getTipo() . '</td>';
+                                $id = $salones->getSalonId();
+                                echo "<td><input type='checkbox' name='opciones[]' id='$id' value='$id'><br>";
+                                // echo '<td><input type="checkbox" name="id" id="id" value='$id'></td>';
+                                echo '</tr>';
                             }
-                            
                             echo '</table>';
-
-
-
-                            if($diferencia <= $total_pages){
-                                $start_loop = $total_pages-$diferencia;
-                            }
-
-                            $end_loop = $total_pages;
-
-                            if($pagina > 1){
-                                echo "<a class='pagina' href='prestamo_equipo.php?pagina=1'>Primera</a>";
-                                echo "<a class='pagina' href='prestamo_equipo.php?pagina=" . ($pagina - 1) . " '> << </a>";
-                            }
-
-                            for($i=$start_loop; $i<=$end_loop; $i++) {     
-                                echo "<a class='pagina' href='prestamo_equipo.php?pagina=" . $i. " '>" .$i. " </a>";
-                            }
-
-                            if($pagina <= $end_loop) {
-                                echo "<a class='pagina' href='prestamo_equipo.php?pagina=".($pagina + 1)."'>>></a>";
-                                echo "<a class='pagina' href='prestamo_equipo.php?pagina=".$total_pages."'>Última</a>";
-                            }
-
-                            } else {
-                                echo '<p>No se encontraron equipos en la base de datos.</p>';
-                            }
-                    
+                        } else {
+                            echo '<p>No se encontraron salones en la base de datos.</p>';
+                        }
                     ?>
-                    
-                    <h5>Introduce la fecha de prestamo</h5>
-                    <label for="fechaPrestamo">Fecha de prestamo</label>
-                    <input type="date" id="fechaPrestamo" name="fechaPrestamo" required min="<?php echo date('Y-m-d'); ?>"><br><br>
-                
-                    <button type="submit" name="pedir" value="pedir">Pedir</button>
+                    <br>
+                    <button type="submit" name="editar" value="editar">Editar</button>
+                    <button type="submit" name="borrar" value="borrar">Borrar</button><br>
                 </form>
                 <br>
                 <a href=../flujo_ventanas.php>Regresar</a>
@@ -209,10 +146,10 @@
 
             <!-- Región derecha -->
             <div class="col-sm-2 sidenav">
-                
             </div>
         </div>
     </div>
+    
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
