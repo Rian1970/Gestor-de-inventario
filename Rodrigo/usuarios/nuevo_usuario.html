@@ -17,91 +17,15 @@
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="../">Inicio</a>
-
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <!-- Usuarios -->
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">      
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Usuarios
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <!--a class="dropdown-item" href="#">Ver</a-->
-                        <a class="dropdown-item" href="./nuevo_usuario.html">Alta</a>
-                        <!--a class="dropdown-item" href="#">Baja</a-->
-                        <!--div class="dropdown-divider"></div-->
-                        <a class="dropdown-item" href="./actualiza_usuario.html">Cambio</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-
-        <!-- Equipo -->
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">      
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Equipo
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <!--a class="dropdown-item" href="#">Ver</a-->
-                        <a class="dropdown-item" href="../equipo/nuevo_equipo.html">Alta</a>
-                        <!--a class="dropdown-item" href="#">Baja</a-->
-                        <!--div class="dropdown-divider"></div-->
-                        <!--a class="dropdown-item" href="#">Cambio</a-->
-                    </div>
-                </li>
-            </ul>
-        </div>
-
-        <!-- Documentacion -->
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">      
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Documentación
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Ver</a>
-                        <a class="dropdown-item" href="#">Alta</a>
-                        <a class="dropdown-item" href="#">Baja</a>
-                        <!--div class="dropdown-divider"></div-->
-                        <a class="dropdown-item" href="#">Cambio</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-
-        <!-- Mantenimiento -->
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">      
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Mantenimiento
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <!--a class="dropdown-item" href="#">Ver</a-->
-                        <a class="dropdown-item" href="../mantenimiento/nuevo_registro.html">Alta</a>
-                        <!--a class="dropdown-item" href="#">Baja</a-->
-                        <!--div class="dropdown-divider"></div-->
-                        <a class="dropdown-item" href="../mantenimiento/actualizar_registro.html">Cambio</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
+        <a class="navbar-brand" href="../inicio.php">Inicio</a> 
     </nav>
 
     <div class="container-fluid text-center">    
         <div class="row content">
         
             <!-- Región izquierda -->
-            <div class="col-sm-4 sidenav">
-                <h2 class="animate__animated animate__bounce">Usuarios</h2>
+            <div class="col-sm-2 sidenav">
+                <!--h2 class="animate__animated animate__bounce">Usuarios</h2-->
 
                 <!--?php
                     $instancia = new ClaseSencilla();
@@ -111,12 +35,12 @@
                     $instancia = new $nombreClase(); // new ClaseSencilla()
                 ?-->
 
-                <table border="1">
+                <!--table border="1">
                     <tr>
                         <th>Usuario</th>
                         <th>Cargo</th>
                     </tr>
-                </table><br>
+                </table><br-->
             </div>
 
             <!-- Región central -->
@@ -124,72 +48,71 @@
                 <h1 class="animate__animated animate__bounce">Alta para nuevos usuarios</h1> <!-- La clase anima el título -->
               
                 <!-- Documentación de bootstrap de un formulario: https://getbootstrap.com/docs/4.0/components/forms/ -->
-                <form>
+                <form action="nuevo_usuario.php" method="post">
                     <!-- Campo nombre -->
                     <div class="form-group animate__animated animate__bounce animate__delay-1s">
                         <label for="nombre">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" name="nombre" aria-describedby="emailHelp" placeholder="Ingresa tu nombre">
+                        <input type="text" class="form-control" id="nombre" name="nombre" aria-describedby="emailHelp" placeholder="Ingresa tu nombre" required>
                         <!--small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small-->
                     </div>
 
                     <!-- Campo apellido paterno -->
                     <div class="form-group">
                         <label for="aPat">Apellido paterno</label>
-                        <input type="text" class="form-control" id="aPat" name="aPat" aria-describedby="emailHelp" placeholder="Ingresa tu nombre">
+                        <input type="text" class="form-control" id="aPat" name="aPat" aria-describedby="emailHelp" placeholder="Ingresa tu apellido paterno" required>
                         <!--small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small-->
                     </div>
 
                     <!-- Campo apellido materno -->
                     <div class="form-group">
                         <label for="aMat">Apellido materno</label>
-                        <input type="text" class="form-control" id="aMat" name="aMat" aria-describedby="emailHelp" placeholder="Ingresa tu nombre">
+                        <input type="text" class="form-control" id="aMat" name="aMat" aria-describedby="emailHelp" placeholder="Ingresa tu apellido materno" required>
                         <!--small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small-->
                     </div>
 
                     <!-- Campo cargo -->
                     <div class="form-group">
-                        <label for="cargo">Cargo</label>
-                        <input type="text" class="form-control" id="cargo" name="cargo" aria-describedby="emailHelp" placeholder="Ingresa tu nombre">
-                        <!--small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small-->
-                    </div>
-
-                    <!-- Campo Departamento -->
-                    <div class="form-group">
-                        <label for="Departamento">Departamento</label>
-                        <input type="text" class="form-control" id="Departamento" name="Departamento" aria-describedby="emailHelp" placeholder="Ingresa tu nombre">
-                        <!--small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small-->
+                        <label for="cargo">Cargo</label><br>
+                        
+                        <input type="radio" id="cargo" name="cargo" value="Estudiante" required>
+                        <label for="estudiante">Estudiante</label><br>
+                        <input type="radio" id="cargo" name="cargo" value="Profesor" required>
+                        <label for="profesor">Profesor</label><br>
+                        <input type="radio" id="cargo" name="cargo" value="Laboratorista" required>
+                        <label for="laboratorista">Laboratorista</label><br><br>
                     </div>
 
                     <!-- Campo matricula -->
                     <div class="form-group">
                         <label for="matricula">Matricula</label>
-                        <input type="text" class="form-control" id="matricula" name="matricula" aria-describedby="emailHelp" placeholder="Ingresa tu nombre">
+                        <input type="text" class="form-control" id="matricula" name="matricula" aria-describedby="emailHelp" placeholder="Ingresa tu nombre" required>
                         <!--small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small-->
                     </div>
                     <!-- Campo contraseña -->
                     <div class="form-group">
-                        <label for="pass">Contraseña</label>
-                        <input type="password" class="form-control" id="pass" name="pass" placeholder="Password">
+                        <label for="contrasenia">Contraseña</label>
+                        <input type="password" class="form-control" id="contrasenia" name="contrasenia" placeholder="Password" required>
                     </div>
+
+                    <!-- Campo contraseña -->
+                    <div class="form-group">
+                        <label for="contrasenia2">Repite la contraseña</label>
+                        <input type="password" class="form-control" id="contrasenia2" name="contrasenia2" placeholder="Password" required>
+                    </div>
+
                     <div class="form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
                         <label class="form-check-label" for="exampleCheck1">Recordar</label>
                     </div>
-                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <button type="submit" class="btn btn-primary">Crear</button>
                 </form>
 
-
+                <a class="navbar-brand" href="../inicio.php">Regresar</a> 
 
             </div>
 
             <!-- Región derecha -->
             <div class="col-sm-2 sidenav">
-                <div class="well">
-                    <p>ADS</p>
-                </div>
-                <div class="well">
-                    <p>ADS</p>
-                </div>
             </div>
         </div>
     </div>

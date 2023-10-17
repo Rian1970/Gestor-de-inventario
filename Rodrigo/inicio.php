@@ -1,3 +1,12 @@
+<?php
+  session_start();
+  error_reporting(0);
+  $varsesion = $_SESSION["id_usuario"];
+
+  if($varsesion == true){
+    header("Location: flujo_ventanas.php");
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,83 +26,7 @@
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="./">Inicio</a>
-
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <!-- Usuarios -->
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">      
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Usuarios
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <!--a class="dropdown-item" href="#">Ver</a-->
-                        <a class="dropdown-item" href="./usuarios/nuevo_usuario.php">Alta</a>
-                        <!--a class="dropdown-item" href="#">Baja</a-->
-                        <!--div class="dropdown-divider"></div-->
-                        <a class="dropdown-item" href="./usuarios/actualiza_usuario.php">Cambio</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-
-        <!-- Equipo -->
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">      
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Equipo
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <!--a class="dropdown-item" href="#">Ver</a-->
-                        <a class="dropdown-item" href="./equipo/nuevo_equipo.php">Alta</a>
-                        <!--a class="dropdown-item" href="#">Baja</a-->
-                        <!--div class="dropdown-divider"></div-->
-                        <!--a class="dropdown-item" href="#">Cambio</a-->
-                    </div>
-                </li>
-            </ul>
-        </div>
-
-        <!-- Documentacion -->
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">      
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Documentación
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Ver</a>
-                        <a class="dropdown-item" href="#">Alta</a>
-                        <a class="dropdown-item" href="#">Baja</a>
-                        <!--div class="dropdown-divider"></div-->
-                        <a class="dropdown-item" href="#">Cambio</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-
-        <!-- Mantenimiento -->
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">      
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Mantenimiento
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <!--a class="dropdown-item" href="#">Ver</a-->
-                        <a class="dropdown-item" href="./mantenimiento/nuevo_registro.php">Alta</a>
-                        <!--a class="dropdown-item" href="#">Baja</a-->
-                        <!--div class="dropdown-divider"></div-->
-                        <a class="dropdown-item" href="./mantenimiento/actualizar_registro.php">Cambio</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
+        <a class="navbar-brand" href="./inicio.php">Inicio</a>
     </nav>
 
     <div class="container-fluid text-center">    
@@ -110,18 +43,18 @@
                 <h1></h1>
     
                 <!-- Documentación de bootstrap de un formulario: https://getbootstrap.com/docs/4.0/components/forms/ -->
-                <form>
+                <form action="usuarios/valida.php" method="post">
 
                     <!-- Campo matricula -->
                     <div class="form-group">
                         <label for="matricula">Matricula</label>
-                        <input type="text" class="form-control" id="matricula" name="matricula" aria-describedby="emailHelp" placeholder="Ingresa tu nombre">
+                        <input type="text" class="form-control" id="matricula" name="matricula" aria-describedby="emailHelp" placeholder="Ingresa tu nombre" required>
                         <!--small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small-->
                     </div>
                     <!-- Campo contraseña -->
                     <div class="form-group">
                         <label for="pass">Contraseña</label>
-                        <input type="password" class="form-control" id="pass" name="pass" placeholder="Password">
+                        <input type="password" class="form-control" id="contrasenia" name="contrasenia" placeholder="Password" required>
                     </div>
                     <div class="form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -129,8 +62,10 @@
                     </div>
                     
                     <!-- Envia los campos name de los inputs-->
-                    <button type="submit" class="btn btn-primary">Guardar</button> 
+                    <button type="submit" class="btn btn-primary">Entrar</button> 
                 </form>
+                <h3>Si no estás registrado crea una cuenta</h3>
+                <a href="usuarios/nuevo_usuario.html">Crear usuario</a>
             </div>
 
             <!-- Región derecha -->
