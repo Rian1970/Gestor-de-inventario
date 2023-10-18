@@ -56,13 +56,13 @@ class daoEquipoImpl implements daoEquipo {
             $stmt->execute();
         } catch (mysqli_sql_exception $e) {
               echo "<div class='alert alert-danger'>El equipo ya existe.</div>";
-              echo "<br><a href=../equipo/nuevo_equipo.html>Regresar</a>";
+              echo "<br><a href=../equipo/nuevo_equipo.php>Regresar</a>";
               $s = 1;
         }
 
         if($s == 0){
             echo "El equipo ha sido creado.<br>";
-            echo "<br><a href=../equipo/nuevo_equipo.html>Regresar</a>";
+            echo "<br><a href=../equipo/nuevo_equipo.php>Regresar</a>";
         }
     }
 

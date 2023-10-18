@@ -52,13 +52,13 @@ class daoSalonImpl implements daoSalon {
             $stmt->execute();
         } catch (mysqli_sql_exception $e) {
               echo "<div class='alert alert-danger'>El salon ya existe.</div>";
-              echo "<br><a href=../salon/nuevo_salon.html>Regresar</a>";
+              echo "<br><a href=../salon/nuevo_salon.php>Regresar</a>";
               $s = 1;
         }
 
         if($s == 0){
             echo "El salon ha sido creado.<br>";
-            echo "<br><a href=../salon/nuevo_salon.html>Regresar</a>";
+            echo "<br><a href=../salon/nuevo_salon.php>Regresar</a>";
         }
     }
 
@@ -120,9 +120,9 @@ class daoSalonImpl implements daoSalon {
 
     public function actualizaSalon($nuevoSalon, $id){
         
-        $query = "UPDATE gestion set Usuario_id = ? where Salon_id = ?";
+        $query = "INSERT INTO gestion (Usuario_id, Salon_id) values (?, ?)";
         $stmt = $this->conexion->prepare($query);
-        $stmt->bind_param("ss", $id, $nuevoSalon );
+        $stmt->bind_param("ss", $id, $nuevoSalon);
         $stmt->execute();
 
     }

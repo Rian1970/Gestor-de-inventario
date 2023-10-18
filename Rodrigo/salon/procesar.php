@@ -32,7 +32,8 @@
                     } else {
                         // echo "Una o ninguna casilla de verificación está seleccionada.";
                         foreach ($opcionesSeleccionadas as $opcion) {
-                            // echo "<br>" . $opcion;
+                            echo "<br>" . $opcion;
+                            echo "<br>" . $varsesion;
                             //$salones = $salonDAO->getSalones($opcion);
                             
                         }

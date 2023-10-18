@@ -103,21 +103,14 @@
         
 
                 <!-- Documentación de bootstrap de un formulario: https://getbootstrap.com/docs/4.0/components/forms/ -->
-                <form>
-                    <!-- Campo categoria -->
-                    <div class="form-group animate__animated animate__bounce animate__delay-1s">
-                        <label for="categoria">Selecciona la categoría del equipo</label>
-                        <select id="categoria" name="categoria">
-                            <option value="volvo">Volvo</option>
-                            <option value="saab">Saab</option>
-                            <option value="fiat">Fiat</option>
-                            <option value="audi" selected>Audi</option>
-                            <option value="ford">Ford</option>
-                            <option value="honda">Honda</option>
-                            <option value="nissan">Nissan</option>
-                            <option value="bmw">BMW</option>
-                        </select>
-                    </div>
+                    <form action="nuevo_equipo_.php" method="post">
+
+                    <label for="categoria">Selecciona la categoría del equipo</label>
+                    <select id="categoria" name="categoria" required>
+                            <option value="Equipo de espectroscopia">Equipo de espectroscopia</option>
+                            <option value="Equipo de electronica">Equipo de electronica</option>
+                            <option value="Equipo de laboratorio">Equipo de laboratorio</option>
+                    </select><br><br>
 
                     <!-- Campo Nombre del equipo -->
                     <div class="form-group">
