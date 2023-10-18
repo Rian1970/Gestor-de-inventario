@@ -142,7 +142,8 @@
 
                     <button type="submit" class="btn btn-primary">Guardar</button>
                 </form>
-
+                <br>
+                <a href=../flujo_ventanas.php>Regresar</a>
 
             </div>
 
