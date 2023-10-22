@@ -63,8 +63,8 @@
                         <thead>
                             <tr style="background:#337ab7; color:white;">
                                 <th width="15%">Nombre</th>
-                                <th width="15%">Apellido P</th>
-                                <th width="15%">Apellido M</th>
+                                <th width="15%">Apellido Paterno</th>
+                                <th width="15%">Apellido Materno</th>
                                 <th width="15%">Matricula</th>
                                 <th width="15%">Cargo</th>
                                 <th width="5%"></th>

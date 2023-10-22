@@ -1,13 +1,13 @@
 <?php
-  session_start();
-  error_reporting(0);
-  $varsesion = $_SESSION["id_usuario"];
+session_start();
+error_reporting(0);
+$varsesion = $_SESSION["id_usuario"];
 
-  if($varsesion == null || $varsesion == ''){
-    echo "Usted no tiene autorizacion<br>";
+if($varsesion == null || $varsesion == ''){
+    echo "Usted no tiene autorización<br>";
     echo "<a class='navbar-brand' href='./index.php'>Regresar al inicio</a>";
     die();
-  }
+}
 ?>
 
 <!DOCTYPE html>
@@ -43,7 +43,6 @@
                     Usuarios
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <!--a class="dropdown-item" href="#">Ver</a-->
                         <a class="dropdown-item" href="../usuarios/actualiza_usuario.php">Actualizar</a>
                         <a class="dropdown-item" href="../usuarios/eliminar.php">Eliminar</a>
                     </div>
@@ -76,7 +75,6 @@
                     Salón
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <!--a class="dropdown-item" href="#">Ver</a-->
                         <a class="dropdown-item" href="../salon/gestion_salon.php">Ver</a>
                         <a class="dropdown-item" href="../salon/nuevo_salon.php">Agregar</a>
                         <a class="dropdown-item" href="../salon/ver_salon.php">Editar</a>
@@ -99,10 +97,7 @@
             <div class="col-sm-8 text-left">
                 <h1 class="animate__animated animate__bounce">Prestamo de equipo de laboratorio</h1>
 
-                    <h2>Equipos disponibles</h2>
-                    <!-- <table border="1">
-                        <tr><th>Nombre</th><th>Modelo</th><th>Categoria</th></tr>
-                    </table><br> -->
+                <h2>Equipos disponibles</h2>
 
                 <?php
                 
@@ -113,41 +108,70 @@
 
                 $equipos = $equipoDAO->getTodosEquipos();
                 
-                ?>
-                    <form method="post" action="pedir.php">
-                        <?php
-                            if (!empty($equipos)) {
-                                echo '<table border="1">';
-                                echo '<tr><th>Nombre</th><th>No Serie</th><th>Categoria</th><th>Estado del equipo</th></tr>';
-                                foreach ($equipos as $equipos) {
-                                    if($equipos->getEstadoE() === "Disponible"){
-                                    echo '<tr>';
-                                    echo '<td>' . $equipos->getNombre() . '</td>';
-                                    echo '<td>' . $equipos->getSerie() . '</td>';
-                                    echo '<td>' . $equipos->getCategoria() . '</td>';
-                                    // echo '<td>' . $equipos->getFechaC() . '</td>';
-                                    echo '<td>' . $equipos->getEstadoE() . '</td>';
-                                    // echo '<td>' . $equipos->getSalon() . '</td>';
-                                    $id = $equipos->getEquipoId();
-                                    echo "<td><input type='checkbox' name='opciones[]' id='$id' value='$id'><br>";
-                                    echo '</tr>';
-                                    }
-                                }
-                                echo '</table>';
-                            } else {
-                                echo '<p>No se encontraron equipos en la base de datos.</p>';
-                            }
-                        
-                        ?>
-                        
-                        <h3>Introduce la fecha de prestamo</h3>
-                        <label for="fechaPrestamo">Fecha de prestamo</label>
-                        <input type="date" id="fechaPrestamo" name="fechaPrestamo" required min="<?php echo date('Y-m-d'); ?>"><br><br>
+                $registro_por_pagina = 5;
+            $pagina = isset($_GET["pagina"]) ? $_GET["pagina"] : 1;
+
+            $start_from = ($pagina - 1) * $registro_por_pagina;
+
+            $equipos_disponibles = array_filter($equipos, function($equipo) {
+                return $equipo->getEstadoE() === "Disponible";
+            });
+
+            $equipos_pagina = array_slice($equipos_disponibles, $start_from, $registro_por_pagina);
+
+            if (!empty($equipos_pagina)) {
+                echo '<table border="1">';
+                echo '<tr><th>Nombre</th><th>No Serie</th><th>Categoria</th><th>Estado del equipo</th></tr>';
+
+                foreach ($equipos_pagina as $equipo) {
+                    echo '<tr>';
+                    echo '<td>' . $equipo->getNombre() . '</td>';
+                    echo '<td>' . $equipo->getSerie() . '</td>';
+                    echo '<td>' . $equipo->getCategoria() . '</td>';
+                    echo '<td>' . $equipo->getEstadoE() . '</td>';
+                    $id = $equipo->getEquipoId();
+                    echo "<td><input type='checkbox' name='opciones[]' id='$id' value='$id'><br>";
+                    echo '</tr>';
+                }
+
+                echo '</table>';
+
+                $total_records = count($equipos_disponibles);
+                $total_pages = ceil($total_records / $registro_por_pagina);
+
+                if ($total_pages > 1) {
+                    echo "<div>";
                     
-                        <button type="submit" name="pedir" value="pedir">Pedir</button>
-                    </form>
-                    <br>
-                    <a href=../flujo_ventanas.php>Regresar</a>
+                    if ($pagina > 1) {
+                        echo "<a class='pagina' href='prestamo_equipo.php?pagina=1'>Primera </a>";
+                    }
+
+                    for ($i = 1; $i <= $total_pages; $i++) {     
+                        echo "<a class='pagina' href='prestamo_equipo.php?pagina=$i'>$i </a>";
+                    }
+
+                    if ($pagina < $total_pages) {
+                        echo "<a class='pagina' href='prestamo_equipo.php?pagina=$total_pages'>Última</a>";
+                    }
+
+                    echo "</div>";
+                }
+            } else {
+                echo '<p>No se encontraron equipos disponibles en la base de datos.</p>';
+            }
+
+
+                ?>
+                
+                <form method="post" action="pedir.php">
+                    <h5>Introduce la fecha de prestamo</h5>
+                    <label for="fechaPrestamo">Fecha de prestamo</label>
+                    <input type="date" id="fechaPrestamo" name="fechaPrestamo" required min="<?php echo date('Y-m-d'); ?>"><br><br>
+                
+                    <button type="submit" name="pedir" value="pedir">Pedir</button>
+                </form>
+                <br>
+                <a href=../flujo_ventanas.php>Regresar</a>
             </div>
 
             <!-- Región derecha -->

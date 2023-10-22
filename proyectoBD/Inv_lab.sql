@@ -136,14 +136,14 @@ VALUES
     ('Disponible', 'Equipo de espectroscopia', 5, 'UVW999', 'HPLC', '2023-11-05'),
     ('Disponible', 'Equipo de espectroscopia', 1, 'AOBC123', 'Espectrofotómetro FTIR', '2023-12-12'),
     ('Disponible', 'Equipo de electrónica', 2, 'XYZP456', 'Osciloscopio digital', '2023-11-20'),
-    -- ('Disponible', 'Equipo de laboratorio', 3, '123XTYZ', 'Agitador magnético', '2024-01-25'),
-    -- ('Disponible', 'Equipo de laboratorio', 4, 'EFGG789', 'Medidor de densidad', '2024-02-10'),
-    -- ('Disponible', 'Equipo de espectroscopia', 2, 'LFMN456', 'Espectrofotómetro UV-Vis', '2024-03-08'),
-    -- ('Disponible', 'Equipo de electronica', 1, 'PQRK789', 'Centrífuga de mesa', '2024-04-30'),
-    -- ('Disponible', 'Equipo de laboratorio', 5, 'HIJI101', 'Generador de ondas', '2024-05-15'),
-    -- ('Disponible', 'Equipo de espectroscopia', 3, 'KLPM456', 'Microscopio electrónico', '2024-06-20'),
-    -- ('Disponible', 'Equipo de laboratorio', 4, 'XYZ7829', 'Agitador orbital', '2024-07-25'),
-    -- ('Disponible', 'Equipo de laboratorio', 2, 'UVW100', 'Microscopio estereoscópico', '2024-08-10'),
+    ('Disponible', 'Equipo de laboratorio', 3, '123XTYZ', 'Agitador magnético', '2024-01-25'),
+    ('Disponible', 'Equipo de laboratorio', 4, 'EFGG789', 'Medidor de densidad', '2024-02-10'),
+    ('Disponible', 'Equipo de espectroscopia', 2, 'LFMN456', 'Espectrofotómetro UV-Vis', '2024-03-08'),
+    ('Disponible', 'Equipo de electronica', 1, 'PQRK789', 'Centrífuga de mesa', '2024-04-30'),
+    ('Disponible', 'Equipo de laboratorio', 5, 'HIJI101', 'Generador de ondas', '2024-05-15'),
+    ('Disponible', 'Equipo de espectroscopia', 3, 'KLPM456', 'Microscopio electrónico', '2024-06-20'),
+    ('Disponible', 'Equipo de laboratorio', 4, 'XYZ7829', 'Agitador orbital', '2024-07-25'),
+    ('Disponible', 'Equipo de laboratorio', 2, 'UVW100', 'Microscopio estereoscópico', '2024-08-10'),
     ('Disponible', 'Equipo de electrónica', 3, 'EFG202', 'Generador de funciones', '2024-09-05');
 
 INSERT INTO prestamo (Usuario_id, Equipo_id, Fecha_P)
