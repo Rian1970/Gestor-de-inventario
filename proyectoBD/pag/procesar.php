@@ -55,16 +55,6 @@
                       }
                       echo "Se ha borrado con éxito.<br><br>";
                       echo "<a href=paginacion.php>Regresar</a>";
-                    // $i=0;
-                    // foreach ($opcionesBorrar as $opcion) {
-                    //     echo "VLV";
-                    //     echo "<br>" . $opcion;
-                    //     $var[$i] = $opcion;
-                    //     $i++;
-                    //       //$usuarioDAO->borrarUsuario($opcion);
-                    // }
-
-                    // header("Location: borrar.php");
         
                 }else{
                     echo "No has seleccionado ninguna opción.<br><br>";

@@ -19,7 +19,7 @@ class daoSalonImpl implements daoSalon {
     public function getTodosSalones() {
         $salones = array();
 
-        // Realizar una consulta para obtener todos los libros de la base de datos
+        // Realizar una consulta para obtener todos los salones de la base de datos
         $query = "SELECT gestion.Gestion_id, usuario.Nombre, salon.Num_salon, salon.Tipo_Salon from usuario join gestion on usuario.Usuario_id=gestion.Usuario_id join salon on salon.Salon_id=gestion.Salon_id;";
         $result = $this->conexion->query($query);
 

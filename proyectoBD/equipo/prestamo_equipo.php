@@ -114,97 +114,40 @@
                 $equipos = $equipoDAO->getTodosEquipos();
                 
                 ?>
-                <form method="post" action="pedir.php">
-                    <?php
-                        // Paginacion
-                        $registro_por_pagina = 5;
-                        $pagina = '';
-                        if(isset($_GET["pagina"])){
-                            $pagina = $_GET["pagina"];
-                        }else{
-                            $pagina = 1;
-                        }
-
-                        $start_from = ($pagina-1) * $registro_por_pagina;
-                        foreach ($equipos as $equipos) {
-                            if($equipos->getEstadoE() === "Disponible"){
-                                $number++;
-                            }
-                        }
-                        
-                        echo "Hay $number elementos<br>";
-                        $total_records = $number;
-                        $total_pages = ceil($total_records/$registro_por_pagina);
-                        $start_loop = $pagina;
-                        $diferencia = $total_pages - $pagina;                        
-    
-                        $equipos = $equipoDAO->getTodosEquipos();
-                        if (!empty($equipos)) {
-                            echo '<table border="1">';
-                            echo '<tr><th>Nombre</th><th>No Serie</th><th>Categoria</th><th>Estado del equipo</th></tr>';
-                            
-                            //echo "Empecemos con el bloque $start_loop <br>";
-
-                            $inicio = $start_loop-1;
-                            $fin = $inicio + $registro_por_pagina;
-                            $i = 0;
-                            //echo "Rango: $inicio y $fin";
-                            foreach ($equipos as $equipos) {
-                                if($equipos->getEstadoE() === "Disponible"){
-                                    if($i >= $inicio && $i < $fin){
-                                        echo '<tr>';
-                                        echo '<td>' . $equipos->getNombre() . '</td>';
-                                        echo '<td>' . $equipos->getSerie() . '</td>';
-                                        echo '<td>' . $equipos->getCategoria() . '</td>';
-                                        // echo '<td>' . $equipos->getFechaC() . '</td>';
-                                        echo '<td>' . $equipos->getEstadoE() . '</td>';
-                                        // echo '<td>' . $equipos->getSalon() . '</td>';
-                                        $id = $equipos->getEquipoId();
-                                        echo "<td><input type='checkbox' name='opciones[]' id='$id' value='$id'><br>";
-                                        echo '</tr>';
+                    <form method="post" action="pedir.php">
+                        <?php
+                            if (!empty($equipos)) {
+                                echo '<table border="1">';
+                                echo '<tr><th>Nombre</th><th>No Serie</th><th>Categoria</th><th>Estado del equipo</th></tr>';
+                                foreach ($equipos as $equipos) {
+                                    if($equipos->getEstadoE() === "Disponible"){
+                                    echo '<tr>';
+                                    echo '<td>' . $equipos->getNombre() . '</td>';
+                                    echo '<td>' . $equipos->getSerie() . '</td>';
+                                    echo '<td>' . $equipos->getCategoria() . '</td>';
+                                    // echo '<td>' . $equipos->getFechaC() . '</td>';
+                                    echo '<td>' . $equipos->getEstadoE() . '</td>';
+                                    // echo '<td>' . $equipos->getSalon() . '</td>';
+                                    $id = $equipos->getEquipoId();
+                                    echo "<td><input type='checkbox' name='opciones[]' id='$id' value='$id'><br>";
+                                    echo '</tr>';
                                     }
-                                    $i++;
                                 }
-                            }
-                            
-                            echo '</table>';
-
-
-
-                            if($diferencia <= $total_pages){
-                                $start_loop = $total_pages-$diferencia;
-                            }
-
-                            $end_loop = $total_pages;
-
-                            if($pagina > 1){
-                                echo "<a class='pagina' href='prestamo_equipo.php?pagina=1'>Primera</a>";
-                                echo "<a class='pagina' href='prestamo_equipo.php?pagina=" . ($pagina - 1) . " '> << </a>";
-                            }
-
-                            for($i=$start_loop; $i<=$end_loop; $i++) {     
-                                echo "<a class='pagina' href='prestamo_equipo.php?pagina=" . $i. " '>" .$i. " </a>";
-                            }
-
-                            if($pagina <= $end_loop) {
-                                echo "<a class='pagina' href='prestamo_equipo.php?pagina=".($pagina + 1)."'>>></a>";
-                                echo "<a class='pagina' href='prestamo_equipo.php?pagina=".$total_pages."'>Última</a>";
-                            }
-
+                                echo '</table>';
                             } else {
                                 echo '<p>No se encontraron equipos en la base de datos.</p>';
                             }
+                        
+                        ?>
+                        
+                        <h3>Introduce la fecha de prestamo</h3>
+                        <label for="fechaPrestamo">Fecha de prestamo</label>
+                        <input type="date" id="fechaPrestamo" name="fechaPrestamo" required min="<?php echo date('Y-m-d'); ?>"><br><br>
                     
-                    ?>
-                    
-                    <h5>Introduce la fecha de prestamo</h5>
-                    <label for="fechaPrestamo">Fecha de prestamo</label>
-                    <input type="date" id="fechaPrestamo" name="fechaPrestamo" required min="<?php echo date('Y-m-d'); ?>"><br><br>
-                
-                    <button type="submit" name="pedir" value="pedir">Pedir</button>
-                </form>
-                <br>
-                <a href=../flujo_ventanas.php>Regresar</a>
+                        <button type="submit" name="pedir" value="pedir">Pedir</button>
+                    </form>
+                    <br>
+                    <a href=../flujo_ventanas.php>Regresar</a>
             </div>
 
             <!-- Región derecha -->

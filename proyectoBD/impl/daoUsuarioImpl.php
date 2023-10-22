@@ -18,8 +18,11 @@ class daoUsuarioImpl implements daoUsuario {
         $usuarios = array();
 
         // Realizar una consulta para obtener todos los libros de la base de datos
-        $query = "SELECT * FROM usuario WHERE Matricula = $m";
-        $result = $this->conexion->query($query);
+        $query = "SELECT * FROM usuario WHERE Matricula LIKE ?";
+        $stmt = $this->conexion->prepare($query);
+        $stmt->bind_param("s", $m);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
         if ($result) {
             while ($row = $result->fetch_assoc()) {

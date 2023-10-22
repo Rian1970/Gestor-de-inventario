@@ -17,7 +17,7 @@ class daoPrestamoImpl implements daoPrestamo {
     public function getTodosPrestamos($id) {
         $prestamo = array();
 
-        // Realizar una consulta para obtener todos los libros de la base de datos
+        // Realizar una consulta para obtener todos los prestamos de la base de datos
         $query = "SELECT prestamo.Prestamo_id, usuario.Nombre, equipo.Nombre, prestamo.Fecha_P, usuario.Usuario_id from usuario join prestamo on usuario.Usuario_id=prestamo.Usuario_id join equipo on equipo.Equipo_id=prestamo.Equipo_id where prestamo.Usuario_id = $id";
         $result = $this->conexion->query($query);
 
