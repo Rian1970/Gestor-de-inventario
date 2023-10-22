@@ -27,22 +27,23 @@
                     $opcionesSeleccionadas = $_POST["opciones"];
         
                     if ($seleccionadas > 1) {
-                        echo "Para editar selecciona solo una opción.<br>";
+                        echo "Para editar selecciona solo una opción.<br><br>";
                         echo "<a href=ver_salon.php>Regresar</a>";
                     } else {
                         // echo "Una o ninguna casilla de verificación está seleccionada.";
                         foreach ($opcionesSeleccionadas as $opcion) {
-                            echo "<br>" . $opcion;
-                            echo "<br>" . $varsesion;
+                            // echo "<br>" . $opcion;
+                            // echo "<br>" . $varsesion;
                             //$salones = $salonDAO->getSalones($opcion);
                             
                         }
                         $salonDAO->actualizaSalon($opcion, $varsesion);
-                        echo "<br>Se ha actualizado con éxito.<br>";
+                        echo "<br>Se ha actualizado con éxito.<br><br>";
                         echo "<a href=../flujo_ventanas.php>Regresar</a>";
+                        echo "<br><br><h3>Puedes ver que ahora gestionas el salon en salon->ver salon.</h3>";
                     }
                 }else{
-                    echo "No has seleccionado ninguna opción.<br>";
+                    echo "No has seleccionado ninguna opción.<br><br>";
                     echo "<a href=ver_salon.php>Regresar</a>";
                 }
 
@@ -57,10 +58,11 @@
                             //echo "<br>" . $opcion;
                             $salonDAO->borrarSalon($opcion);
                         }
-                        echo "Se ha borrado con éxito.<br>";
-                        echo "<a href=../flujo_ventanas.php>Regresar</a>";
+                        echo "Se ha borrado con éxito.<br><br>";
+                        echo "<a href=ver_salon.php>Regresar</a>";
+                        echo "<br><br><h3>Puedes ver que se haborrado la gestión del salon en salon->ver salon.</h3>";
                 }else{
-                    echo "No has seleccionado ninguna opción.<br>";
+                    echo "No has seleccionado ninguna opción.<br><br>";
                     echo "<a href=ver_salon.php>Regresar</a>";
                 }
 

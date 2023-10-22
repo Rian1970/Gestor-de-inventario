@@ -97,7 +97,7 @@
 
             <!-- Región central -->
             <div class="col-sm-8 text-left">
-                <h1 class="animate__animated animate__bounce">Ver salones</h1>
+                <h1 class="animate__animated animate__bounce">Ver gestión de salones</h1>
 
                 <?php
                 // Incluir la clase Libro y la clase LibroDAOMySQL

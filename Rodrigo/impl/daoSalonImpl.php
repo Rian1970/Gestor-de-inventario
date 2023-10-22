@@ -64,7 +64,7 @@ class daoSalonImpl implements daoSalon {
 
     public function borrarSalon($borra) {
         // Eliminar un libro de la base de datos por ISBN
-        $query = "DELETE from gestion where Gestion_id = ?";
+        $query = "DELETE from gestion where Salon_id = ?";
         $stmt = $this->conexion->prepare($query);
         $stmt->bind_param("s", $borra);
         $stmt->execute();

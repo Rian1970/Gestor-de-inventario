@@ -45,13 +45,13 @@ if (isset($usuarioId)) {
         }
     } else {
         // Contraseña incorrecta
-        echo "El usuario o la contraseña no son correctos.<br>";
+        echo "El usuario o la contraseña no son correctos.<br><br>";
         echo "<a href=../index.php>Regresar</a>";
         exit();
     }
 } else {
     // El usuario no existe
-    echo "El usuario o la contraseña no son correctos.<br>";
+    echo "El usuario o la contraseña no son correctos.<br><br>";
     echo "<a href=../index.php>Regresar</a>";
     exit();
 }

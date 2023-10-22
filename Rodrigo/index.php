@@ -7,6 +7,7 @@
     header("Location: flujo_ventanas.php");
   }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

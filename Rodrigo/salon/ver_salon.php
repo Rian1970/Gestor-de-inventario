@@ -100,8 +100,10 @@
             <div class="col-sm-8 text-left"> 
                 <h1 class="animate__animated animate__bounce">Ver salones</h1>
 
-                <h3>Salecciona una o más casillas si deseas borrar, si deseas editar la información solo selecciona una casilla.</h3>
-                <h3>La casilla que selecciones es el salon que quieres gestionar</h3>
+                <h3>En esta pestaña no se borran salones, se borran las gestiones del salón.</h3>
+                <h3>Selecciona una o más casillas si deseas borrar la gestión de ese salon.</h3>
+                <h3>Si deseas editar la información solo selecciona una casilla.</h3>
+                <h3>La casilla que selecciones es el salon que quieres gestionar.</h3>
 
                 <?php
                 // Incluir la clase Libro y la clase LibroDAOMySQL
