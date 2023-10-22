@@ -118,7 +118,10 @@ if($varsesion == null || $varsesion == ''){
             });
 
             $equipos_pagina = array_slice($equipos_disponibles, $start_from, $registro_por_pagina);
+            ?>
+            <form method="post" action="pedir.php">
 
+            <?php
             if (!empty($equipos_pagina)) {
                 echo '<table border="1">';
                 echo '<tr><th>Nombre</th><th>No Serie</th><th>Categoria</th><th>Estado del equipo</th></tr>';
@@ -156,14 +159,14 @@ if($varsesion == null || $varsesion == ''){
 
                     echo "</div>";
                 }
-            } else {
-                echo '<p>No se encontraron equipos disponibles en la base de datos.</p>';
-            }
+                } else {
+                    echo '<p>No se encontraron equipos disponibles en la base de datos.</p>';
+                }
 
 
                 ?>
                 
-                <form method="post" action="pedir.php">
+                
                     <h5>Introduce la fecha de prestamo</h5>
                     <label for="fechaPrestamo">Fecha de prestamo</label>
                     <input type="date" id="fechaPrestamo" name="fechaPrestamo" required min="<?php echo date('Y-m-d'); ?>"><br><br>
