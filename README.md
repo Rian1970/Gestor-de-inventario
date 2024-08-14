@@ -4,7 +4,7 @@
 
 ## Paso 1: Descarga y descompresión
 
-1. Descarga el proyecto en ZIP llamado `proyectobd`.
+1. Descarga el proyecto en ZIP. Ambas carpetas tienen incluyen el programa, la única diferencia es que `proyecto`no tiene hojas de estilo y `proyectoBD` sí.
 2. Descomprime el ZIP en el siguiente directorio: `C:\xampp\htdocs`.
    
    Al descomprimir, obtendrás los siguientes archivos:
