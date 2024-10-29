@@ -19,6 +19,8 @@
    
    ```
    cd htdocs
+   ```
+   ```
    cd proyectobd
    ```
 
@@ -43,7 +45,8 @@
 
 ## Paso 3: Verificación del entorno
 
-1. Abre tu navegador web y dirígete a `localhost/proyectobd`. Si todo ha salido bien el usuario puede ingresar al sistema y crear un nuevo usuario.
+1. Abre tu navegador web y dirígete a <a href="https://localhost/proyectobd">`localhost/proyectobd`</a>.
+   Si todo ha salido bien el usuario puede ingresar al sistema y crear un nuevo usuario.
 
    <img width="442" alt="image" src="https://github.com/user-attachments/assets/4836a362-5640-4772-8c9b-d45f68b74d23">
 
