@@ -25,7 +25,6 @@ foreach($consulta as $consulta){
     $n = $consulta->getNombre();
     $usuarioId = $consulta->getUsuarioId();
     $contrasena_hash = $consulta->getContrasenia();
-    //echo $n;
 }
 
 // Si el usuario existe
